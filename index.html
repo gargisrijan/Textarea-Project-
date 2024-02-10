@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            margin-left: 500px;
+        }
+        .s{
+            margin-left: 50px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        #ta{
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 50px;
+            resize: none;
+            height: 300px;
+            width: 1200px;
+            
+        }
+        #btncon1{
+            margin-left:800px;
+            margin-top:-60px;
+         }
+         #btncon2{
+            margin-left:800px;
+            margin-top:-50px;
+         }
+         .bg{
+            margin-top:10px;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid black;
+            box-shadow: 2px 2px 5px palevioletred;
+            border-radius: 50%;
+            margin: 15px;
+            cursor: pointer;
+         }
+         .bg2{
+            margin-top:30px;
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 3px solid black;
+            box-shadow: 2px 2px 5px palevioletred;
+            border-radius: 50%;
+            margin: 15px;
+            cursor: pointer;
+         }
+
+         #one{
+            background-color: whitesmoke;
+         }
+         #two{
+            background-color: tomato;
+         }
+         #three{
+            background-color: palevioletred;
+         }
+         #four{
+            background-color: purple;
+         }
+         #five{
+            background-color: seagreen;
+         }
+         #head1{
+            margin-top:40px;
+            margin-left:600px;
+         }
+         #head2{
+            margin-top:35px;
+            margin-left:650px;
+         }
+    </style>
+</head>
+<body bgcolor="lightblue">
+    <center><h2><b><u>Gargi Text Area</u><b></h2></center>
+        <label for="" id="fonts">Font-Size</label>
+        <select id="fsize">
+            <option value="-1">size</option>
+            <option value="20">20</option>
+            <option value="26">26</option>
+            <option value="28">28</option>
+        </select>
+        <label for="" id="fonts">Font-Family</label>
+        <select id="fstyle">
+            <option value="-1">style</option>
+            <option value="Calibri">Calibri</option>
+            <option value="Georgia">Georgia</option>
+            <option value="Freestyle Script">Freestyle Script</option>
+        </select>
+
+            <h3 id="head1">Background color :</h3>
+            <div id="btncon1">
+                
+                 <span class="bg" id="one" onclick="bgc('#ffffff')"></span>
+                 <span class="bg" id="two" onclick="bgc('#ff6347')"></span>
+                 <span class="bg" id="three" onclick="bgc('#ffc0cb')"></span>
+                 <span class="bg" id="four" onclick="bgc('#9370db')"></span>
+                 <span class="bg" id="five" onclick="bgc('#2e8b57')"></span>
+            </div> 
+                 <h3 id="head2">Text color :</h3>
+                 <div id="btncon2">
+                 <span class="bg2" id="one" onclick="bgcc('#ffffff')"></span>
+                 <span class="bg2" id="two" onclick="bgcc('#ff6347')"></span>
+                 <span class="bg2" id="three" onclick="bgcc('#ffc0cb')"></span>
+                 <span class="bg2" id="four" onclick="bgcc('#9370db')"></span>
+                 <span class="bg2" id="five" onclick="bgcc('#2e8b57')"></span> 
+                 
+            </div>
+
+        
+
+    
+    <div>
+        <textarea id="ta" rows="20" cols="150"></textarea>
+    </div>
+    <div id="div1">
+        <span class="s">Char : </span>
+        <span id="ch" class="s">0</span>
+        <span class="s">Word : </span>
+        <span id="wd" class="s">0</span>
+    </div>
+</body>
+<script>
+    let tb=document.getElementById('ta');
+    tb.addEventListener('input',function(){
+        var char=this.value;
+        let noc=char.length;
+        document.getElementById('ch').innerHTML=noc;
+        char=char.trim();
+        let word=char.split(" ");
+        let fw=word.filter(function(c){
+            return c!="";
+        })
+        document.getElementById('wd').innerHTML=fw.length;
+    })
+    function bgc(c)
+        {
+            let hh=document.getElementById('hh');
+            let pp=document.getElementById('pp');
+            document.body.style.background=c;
+            if(c!='#ffffff')
+            {
+                hh.style.color='white';
+                pp.style.color='white';
+            }
+            else
+            {
+                hh.style.color='black';
+                pp.style.color='black';
+            }
+        }
+
+        function bgcc(c1)
+        {
+            let h1=document.getElementById('h1');
+            let p1=document.getElementById('p1');
+            document.getElementById('ta').style.color=c1;
+            
+        }
+
+        var selectFontSize=document.getElementById('fsize');
+        selectFontSize.addEventListener('change',function(){
+            selectFontSize=document.getElementById('fsize').value;
+            document.getElementById('ta').style.fontSize=selectFontSize+"px";
+        });
+     
+        var selectStyle=document.getElementById('fstyle');
+        selectStyle.addEventListener('change',function(){
+            selectStyle=document.getElementById('fstyle').value;
+            document.getElementById('ta').style.fontFamily=selectStyle;
+        });
+     
+</script>
+</html>
